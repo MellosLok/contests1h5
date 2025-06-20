@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聚光灯 主题游戏创作征集 S1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .section {
+            padding: 60px 80px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .kv-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .content-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .highlight-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e74c3c;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .theme-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .theme-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #3498db;
+            border-radius: 5px;
+        }
+
+        .theme-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .theme-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .reward-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .reward-item {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .reward-rank {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .reward-amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: #d35400;
+            margin-bottom: 10px;
+        }
+
+        .rules-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .rules-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .rules-number {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .link {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .reward-package {
+            margin-bottom: 25px;
+            border: 2px solid #e8f4fd;
+            padding: 25px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #f8fbff 0%, #f0f8ff 100%);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1f0ff;
+        }
+
+        .package-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1e3a8a;
+            flex-shrink: 0;
+            margin-right: 20px;
+        }
+
+        .unlock-condition {
+            font-size: 15px;
+            color: #64748b;
+            line-height: 1.5;
+            flex: 1;
+            text-align: right;
+        }
+
+        .package-benefits {
+            margin-top: 15px;
+        }
+
+        .benefit-item {
+            font-size: 16px;
+            color: #374151;
+            margin-bottom: 8px;
+            padding: 8px 0;
+            border-left: 3px solid #3b82f6;
+            padding-left: 15px;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 700px) {
+            .container {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .package-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .package-name {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+            
+            .unlock-condition {
+                text-align: left;
+                font-size: 14px;
+            }
+            
+            .benefit-item {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 1. 主题KV图片 -->
+        <div class="section">
+            <div class="kv-image">
+                聚光灯 主题游戏创作征集 S1<br>
+                主KV图示例
+            </div>
+        </div>
+
+        <!-- 2. 活动介绍+导语文字 -->
+        <div class="section">
+            <p class="content-text">
+                欢迎参加"聚光灯 主题游戏创作征集 S1"活动！这是一个专为游戏创作者打造的展示平台，旨在发掘优秀的游戏作品和创意人才。
+            </p>
+            <p class="content-text">
+                无论您是独立开发者、游戏工作室还是游戏爱好者，都可以通过这个平台展示您的创意和才华。我们期待看到更多精彩的作品诞生！
+            </p>
+        </div>
+
+        <!-- 3. 征集时间文字 -->
+        <div class="section">
+            <h2 class="section-title">本期征集时间</h2>
+            <p class="highlight-text">
+                2025年7月28日 - 2025年10月26日<br>
+            </p>
+        </div>
+
+        <!-- 4. 征集主题列表 -->
+        <div class="section">
+            <h2 class="section-title">征集主题</h2>
+            <ul class="theme-list">
+                <li class="theme-item">
+                    <div class="theme-title">盲盒挑战：下一次开箱永远未知</div>
+                </li>
+                <li class="theme-item">
+                    <div class="theme-title">永无止境的闯关：通关不是重点，下一层才是开始</div>
+                </li>
+                <li class="theme-item">
+                    <div class="theme-title">玩法缝合怪：要缝就缝最离谱的机制</div>
+                </li>
+                <li class="theme-item">
+                    <div class="theme-title">经典重开：古早玩法2.0</div>
+                </li>
+                <li class="theme-item">
+                    <div class="theme-title">重启人生：如果让我重来一次</div>
+                </li>
+                <li class="theme-item">
+                    <div class="theme-title">萌宠乐园：怎么可爱怎么来</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 5. 活动奖励 -->
+        <div class="section">
+            <h2 class="section-title">活动奖励</h2>
+            
+            <div class="reward-package">
+                <div class="package-header">
+                    <div class="package-name">征集加速包1</div>
+                    <div class="unlock-condition">解锁条件：征集期内，达成热度≥5000且评分≥7</div>
+                </div>
+                <div class="package-benefits">
+                    <div class="benefit-item">权益：流量激励金5000元</div>
+                </div>
+            </div>
+
+            <div class="reward-package">
+                <div class="package-header">
+                    <div class="package-name">征集加速包2</div>
+                    <div class="unlock-condition">解锁条件：征集期内，达成热度≥50000且评分≥7</div>
+                </div>
+                <div class="package-benefits">
+                    <div class="benefit-item">权益1：流量激励金20000元</div>
+                    <div class="benefit-item">权益2：站外平台投放曝光资格</div>
+                </div>
+            </div>
+
+            <div class="reward-package">
+                <div class="package-header">
+                    <div class="package-name">本期优选</div>
+                    <div class="unlock-condition">解锁条件：征集期内，热度/评分/拉新/留存等各项综合数据表现优异</div>
+                </div>
+                <div class="package-benefits">
+                    <div class="benefit-item">权益1：根据数据表现换算的流量激励金，上不封顶</div>
+                    <div class="benefit-item">权益2：站外平台投放曝光资格</div>
+                    <div class="benefit-item">权益3：站内官方推荐位展示</div>
+                </div>
+            </div>
+
+            <div class="reward-package">
+                <div class="package-header">
+                    <div class="package-name">影响力优选</div>
+                    <div class="unlock-condition">解锁条件：征集期内，站外拉新用户数据优异</div>
+                </div>
+                <div class="package-benefits">
+                    <div class="benefit-item">权益1：根据数据表现换算的流量激励金，上不封顶</div>
+                    <div class="benefit-item">权益2：站外平台投放曝光资格</div>
+                    <div class="benefit-item">权益3：站内官方推荐位展示</div>
+                </div>
+            </div>
+
+            <div class="reward-package">
+                <div class="package-header">
+                    <div class="package-name">持续运营包</div>
+                    <div class="unlock-condition">解锁条件：征集结束起30天内，综合热度/评分/拉新/留存的数据表现优异</div>
+                </div>
+                <div class="package-benefits">
+                    <div class="benefit-item">权益1：根据数据表现换算的流量激励金，上不封顶</div>
+                    <div class="benefit-item">权益2：站外平台投放曝光资格</div>
+                    <div class="benefit-item">权益3：站内官方推荐位展示</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. 征集规则 -->
+        <div class="section">
+            <h2 class="section-title">征集规则</h2>
+            <ul class="rules-list">
+                <li class="rules-item">
+                    <span class="rules-number">1</span>
+                    <span class="content-text">符合主题：游戏需要符合征集主题，请注意不要生硬套题。</span>
+                </li>
+                <li class="rules-item">
+                    <span class="rules-number">2</span>
+                    <span class="content-text">时间自由：在90天征集期内任何时间投稿均可有效参与，只要在征集期内达成门槛即可解锁流量激励金奖励。</span>
+                </li>
+                <li class="rules-item">
+                    <span class="rules-number">3</span>
+                    <span class="content-text">形式自由：用户可以选择小游戏或TapPlay形式上线并投稿游戏（APK游戏亦可通过TapPlay形式上线）。</span>
+                </li>
+                <li class="rules-item">
+                    <span class="rules-number">4</span>
+                    <span class="content-text">动态评奖：根据游戏自身在征集期间获得的数据发放相应的流量激励金；同时设立了多个支线任务，完成亦可解锁奖励。</span>
+                </li>
+                <li class="rules-item">
+                    <span class="rules-number">5</span>
+                    <span class="content-text">要求原创：构成游戏的所有资产必须为原创或已获得有效授权，包括但不限于代码、美术、音频等。</span>
+                </li>
+                <li class="rules-item">
+                    <span class="rules-number">6</span>
+                    <span class="content-text">内容合规：游戏须符合法律法规和TapTap平台审核标准，包括游戏本体内容和宣发材料。</span>
+                </li>
+                <li class="rules-item">
+                    <span class="rules-number">7</span>
+                    <span class="content-text">AI生成声明：如涉及AI生成内容，需在游戏简介中声明。</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 7. 常见问题 -->
+        <div class="section">
+            <h2 class="section-title">常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何提交参赛作品？</div>
+                <div class="faq-answer">
+                    A: 请访问我们的官方网站 <a href="#" class="link">www.example.com</a>，注册账号后按照页面指引上传作品文件和相关资料。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 参赛作品有什么技术要求？</div>
+                <div class="faq-answer">
+                    A: 游戏作品需要支持Windows、macOS或移动平台运行，文件大小不超过2GB，并提供完整的安装说明。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 团队可以参赛吗？</div>
+                <div class="faq-answer">
+                    A: 可以，团队参赛需要指定一名负责人，获奖后奖金将发放给负责人，由团队内部自行分配。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何联系主办方？</div>
+                <div class="faq-answer">
+                    A: 如有疑问，请发送邮件至 <a href="mailto:contact@example.com" class="link">contact@example.com</a> 或拨打客服热线 400-123-4567。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 获奖作品会如何展示？</div>
+                <div class="faq-answer">
+                    A: 获奖作品将在官方网站、社交媒体平台和相关游戏展会上进行展示和宣传，提升作品的曝光度。
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
