@@ -256,6 +256,65 @@
             .benefit-item {
                 font-size: 15px;
             }
+
+            .bottom-buttons {
+                width: 100%;
+                left: 0;
+                transform: none;
+            }
+        }
+
+        .bottom-buttons {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            background: transparent;
+            padding: 15px 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .action-button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .primary-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .primary-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .secondary-button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .secondary-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .bottom-spacer {
+            height: 80px;
         }
     </style>
 </head>
@@ -444,5 +503,12 @@
             </div>
         </div>
     </div>
+
+    <div class="bottom-buttons">
+        <a href="#" class="action-button primary-button">立即报名</a>
+        <a href="#" class="action-button secondary-button">加入讨论</a>
+    </div>
+
+    <div class="bottom-spacer"></div>
 </body>
 </html> 
