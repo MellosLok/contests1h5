@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>确认厂商账号 - 聚光灯 主题游戏创作征集 S1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 60px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            padding: 60px 80px;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .company-list {
+            margin-bottom: 40px;
+        }
+
+        .company-item {
+            background: #f8f9fa;
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .company-item:hover {
+            border-color: #3b82f6;
+            background: #f0f8ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+
+        .company-item.selected {
+            border-color: #3b82f6;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .company-item.selected::after {
+            content: "✓";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #3b82f6;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .company-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .company-desc {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #6c757d;
+            border: 2px solid #e1e8ed;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #3b82f6;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 700px) {
+            .container {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content-section {
+                padding: 40px 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .page-title {
+                font-size: 20px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>聚光灯主题游戏创作征集#1</h1>
+        </div>
+
+        <div class="content-section">
+            <h2 class="page-title">请确认用以下厂商账号参加活动</h2>
+            
+            <div class="company-list">
+                <div class="company-item" data-company="game-studio-1">
+                    <div class="company-name">星辰游戏工作室</div>
+                </div>
+                
+                <div class="company-item" data-company="game-studio-2">
+                    <div class="company-name">像素工坊</div>
+                </div>
+                
+                <div class="company-item" data-company="game-studio-3">
+                    <div class="company-name">创意无限工作室</div>
+                </div>
+                
+                <div class="company-item" data-company="game-studio-4">
+                    <div class="company-name">萌宠乐园</div>
+                </div>
+                
+                <div class="company-item" data-company="game-studio-5">
+                    <div class="company-name">重力实验室</div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="confirmBtn" disabled>确认参加</button>
+                <a href="index.html" class="btn btn-secondary">返回</a>
+            </div>
+
+            <a href="index.html" class="back-link">← 返回活动详情页</a>
+        </div>
+    </div>
+
+    <script>
+        let selectedCompany = null;
+
+        // 点击厂商选择
+        document.querySelectorAll('.company-item').forEach(function(item) {
+            item.addEventListener('click', function() {
+                // 移除其他选中状态
+                document.querySelectorAll('.company-item').forEach(function(el) {
+                    el.classList.remove('selected');
+                });
+                
+                // 添加当前选中状态
+                this.classList.add('selected');
+                selectedCompany = this.getAttribute('data-company');
+                
+                // 启用确认按钮
+                document.getElementById('confirmBtn').disabled = false;
+            });
+        });
+
+        // 确认参加按钮
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            if (selectedCompany) {
+                // 这里可以添加实际的提交逻辑
+                alert('已确认使用 ' + selectedCompany + ' 参加活动！');
+                // 可以跳转到其他页面或执行其他操作
+            }
+        });
+    </script>
+</body>
+</html> 

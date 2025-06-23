@@ -554,20 +554,62 @@
                     <span class="rules-number">7</span>
                     <span class="content-text">AI生成声明：如涉及AI生成内容，需在游戏简介中声明。</span>
                 </li>
-                <li class="rules-item">
-                    <span class="rules-number">8</span>
-                    <span class="content-text" style="color: #e74c3c; font-weight: bold;">每款游戏仅限参加一次「聚光灯主题游戏创作征集」活动，投稿后不可取消。请确认游戏质量已符合上线标准，并能在征集期内有充分时间冲刺奖项。如暂未准备好，可等待参加后续征集活动。</span>
-                </li>
             </ul>
+        </div>
+
+        <!-- 7. 常见问题 -->
+        <div class="section">
+            <h2 class="section-title">常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何提交参赛作品？</div>
+                <div class="faq-answer">
+                    A: 请访问我们的官方网站 <a href="#" class="link">www.example.com</a>，注册账号后按照页面指引上传作品文件和相关资料。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 参赛作品有什么技术要求？</div>
+                <div class="faq-answer">
+                    A: 游戏作品需要支持Windows、macOS或移动平台运行，文件大小不超过2GB，并提供完整的安装说明。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 团队可以参赛吗？</div>
+                <div class="faq-answer">
+                    A: 可以，团队参赛需要指定一名负责人，获奖后奖金将发放给负责人，由团队内部自行分配。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 如何联系主办方？</div>
+                <div class="faq-answer">
+                    A: 如有疑问，请发送邮件至 <a href="mailto:contact@example.com" class="link">contact@example.com</a> 或拨打客服热线 400-123-4567。
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Q: 获奖作品会如何展示？</div>
+                <div class="faq-answer">
+                    A: 获奖作品将在官方网站、社交媒体平台和相关游戏展会上进行展示和宣传，提升作品的曝光度。
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="bottom-buttons">
-        <a href="confirm.html" class="action-button primary-button">立即报名</a>
+        <a href="#" class="action-button primary-button">立即报名</a>
         <a href="#" class="action-button secondary-button">加入讨论</a>
     </div>
 
     <div class="bottom-spacer"></div>
+
+    <!-- 弹框内容 -->
+    <div class="modal-overlay">
+        <div class="modal">
+            <div class="modal-title">跳转DC后台开发者活动中心</div>
+            <div class="modal-content">
+                您确定要跳转到DC后台开发者活动中心吗？
+            </div>
+            <button class="modal-button">确定</button>
+        </div>
+    </div>
 
     <!-- 讨论区弹框内容 -->
     <div class="modal-overlay" id="discussionModal">
@@ -581,6 +623,12 @@
     </div>
 
     <script>
+        // 点击立即报名按钮时显示弹框
+        document.querySelector('.primary-button').addEventListener('click', function(e) {
+            e.preventDefault(); // 阻止默认的链接跳转行为
+            document.querySelector('.modal-overlay').style.display = 'flex';
+        });
+
         // 点击加入讨论按钮时显示讨论区弹框
         document.querySelector('.secondary-button').addEventListener('click', function(e) {
             e.preventDefault(); // 阻止默认的链接跳转行为
